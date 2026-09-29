@@ -302,12 +302,9 @@ def do_import(sonarr, qbit, info):
     tf = target[0]
     save_path = (t.get("save_path") or "").rstrip("/")
     content = t.get("content_path") or (save_path + "/" + t.get("name", ""))
-    if len(files) == 1:
-        exact = content if content.endswith(tf["name"]) else save_path + "/" + tf["name"]
-        folder = os.path.dirname(exact)
-    else:
-        folder = content
-        exact = folder.rstrip("/") + "/" + tf["name"]
+    # files[].name é relativo ao save_path (e já inclui a pasta-raiz do torrent)
+    exact = save_path + "/" + tf["name"]
+    folder = content if len(files) > 1 else os.path.dirname(exact)
     cands = sonarr.manualimport(folder)
     chosen = next((c for c in cands if c.get("path") == exact), None)
     if not chosen:
