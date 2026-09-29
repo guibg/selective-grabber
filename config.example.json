@@ -1,0 +1,29 @@
+{
+  "sonarr_url": "http://sonarr:8989",
+  "sonarr_api_key": "YOUR_SONARR_API_KEY",
+
+  "prowlarr_url": "http://prowlarr:9696",
+  "prowlarr_api_key": "YOUR_PROWLARR_API_KEY",
+
+  "qbittorrent_url": "http://qbittorrent:8080",
+  "qbittorrent_user": "admin",
+  "qbittorrent_password": "YOUR_QBITTORRENT_PASSWORD",
+
+  "category": "anime",
+  "tag": "selective-grabber",
+  "poll_seconds": 300,
+  "max_grabs_per_run": 6,
+  "retry_hours": 6,
+  "selection_timeout_seconds": 60,
+
+  "series": [
+    {
+      "sonarr_series_id": 1,
+      "title": "One Piece",
+      "search_categories": [],
+      "preferred_groups": ["Judas", "Anime Time", "Lia", "Erai-raws"],
+      "min_seeders": 1,
+      "priority_abs": [541, 543]
+    }
+  ]
+}

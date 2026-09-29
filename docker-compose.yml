@@ -1,0 +1,19 @@
+# Example compose. The helper must share a network with Sonarr, qBittorrent and
+# Prowlarr so it can reach them by hostname. If they already run under a compose
+# network, set it as `external` below (adjust the name).
+services:
+  selective-grabber:
+    build: .
+    container_name: selective-grabber
+    environment:
+      - TZ=Etc/UTC
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
+    networks:
+      - media
+
+networks:
+  media:
+    external: true
+    name: media
